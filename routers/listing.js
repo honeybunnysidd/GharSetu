@@ -32,4 +32,4 @@ router.route("/:id")
 
 router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(listingController.renderEditForm));     //UPDATE (Edit & Update Route)-----------------
 
-module.exports = router;        //export---app.js---------------
+module.exports = router;   
