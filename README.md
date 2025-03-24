@@ -7,9 +7,6 @@
   <img src="https://profile-counter.glitch.me/airbnb-project/count.svg" />
   </a>
 </p>
-
----
-
 ---
 ## Project Overview
 
