@@ -7,7 +7,9 @@
   <img src="https://profile-counter.glitch.me/airbnb-project/count.svg" />
   </a>
 </p>
+
 ---
+
 ## Project Overview
 
 Excited to share my journey of developing a feature-rich full-stack web application inspired by Airbnb. The project is built using MongoDB, Express.js, and Node.js.
