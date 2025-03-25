@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GharSetu : Home</title>
-  </head>
-  <body>
-    <hr>
-    <form action="/listings/new" method="get">
-      <button>Create new listing</button>
-    </form>
-    <hr>
-    <table border="1">
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Location</th>
-        <th>Country</th>
-      </tr>
+<% layout('./layouts/boilerplate') -%>
 
-      <% for(listing of allListings){ %>
-      <tr>
-        <td><a href="/listing/<%= listing.id%>"><%=listing.title %></a></td>
-        <td><%=listing.description %></td>
-        <td><%=listing.price %></td>
-        <td><%=listing.location %></td>
-        <td><%=listing.country%></td>
-      </tr>
+<body>
+  <!-- <form action="/listings/new" method="get">
+    <button>Create new listing</button>
+  </form> -->
+  <table >
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Location</th>
+      <th>Country</th>
+    </tr>
 
-      <%}%>
-    </table>
-  </body>
-</html>
+    <% for(listing of allListings){ %>
+    <tr>
+      <td><a href="/listing/<%= listing.id%>"><%=listing.title %></a></td>
+      <td><%=listing.description %></td>
+      <td><%=listing.price %></td>
+      <td><%=listing.location %></td>
+      <td><%=listing.country%></td>
+    </tr>
+
+    <%}%>
+  </table>
+</body>
