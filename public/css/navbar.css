@@ -1,0 +1,13 @@
+/* ------------------NavBar------------------------- */
+.navbar {
+    height: 5rem;
+    background-color: white;
+  }
+  .fa-route {
+    color: #fe424d;
+    font-size: 2rem;
+  }
+  .nav-link {
+    color: #222222;
+  }
+  
