@@ -35,10 +35,14 @@
       </tr>
     </table>
 
-    <img src="<%= curListing.image.url %>" alt="" />
     <a href="/listings" class="btn btn-danger">Back</a>
-    <form action="/listings/<%= curListing._id%>/edit" method="get">
-      <button class="btn btn-primary">Edit</button>
+    <img src="<%= curListing.image.url %>" alt="" />
+
+    <form action="/listings/<%= curListing._id%>?_method=DELETE" method="post">
+      <button class="btn btn-danger">Delete</button>
     </form>
+    <a href="/listings/<%= curListing._id%>/edit" class="btn btn-primary"
+      >Edit</a
+    >
   </body>
 </html>

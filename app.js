@@ -76,8 +76,10 @@ app.patch("/listings/:id", async (req, res) => {
 });
 
 //Destroy Listing Route
-app.delete("/listings/:id", (req, res) => {
-  res.send("Deleted")
+app.delete("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  await Listing.findByIdAndDelete(id);
+  res.redirect("/listings");
 });
 
 //Server listen on port 8080
