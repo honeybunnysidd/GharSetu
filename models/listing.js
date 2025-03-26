@@ -10,15 +10,8 @@ const listingSchema = new mongoose.Schema({
     type: String,
   },
   image: {
-    url: {
-      type: String,
-      default:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/The_Golden_Temple_of_Amrithsar_7.jpg/1200px-The_Golden_Temple_of_Amrithsar_7.jpg",
-    },
-
-    filename: {
-      type: String,
-    },
+    url: String,
+    filename: String,
   },
   price: {
     type: Number,

@@ -50,8 +50,15 @@ app.get("/listings/new", (req, res) => {
 });
 
 app.post("/listings", async (req, res) => {
-  let { title, description, price, location, country } = req.body;
-  await Listing.insertOne({ title, description, price, location, country });
+  let { title, description, img, price, location, country } = req.body;
+  await Listing.insertOne({
+    title,
+    description,
+    image: { url: img },
+    price,
+    location,
+    country,
+  });
   res.redirect("/listings");
 });
 
