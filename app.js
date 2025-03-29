@@ -49,17 +49,21 @@ app.get("/listings/new", (req, res) => {
   res.render("listings/new");
 });
 
-app.post("/listings", async (req, res) => {
-  let { title, description, img, price, location, country } = req.body;
-  await Listing.insertOne({
-    title,
-    description,
-    image: { url: img },
-    price,
-    location,
-    country,
-  });
-  res.redirect("/listings");
+app.post("/listings", async (req, res,next) => {
+  try {
+    let { title, description, img, price, location, country } = req.body;
+    await Listing.insertOne({
+      title,
+      description,
+      image: { url: img },
+      price,
+      location,
+      country,
+    });
+    res.redirect("/listings");
+  } catch (err) {
+    next(err);
+  }
 });
 
 //Edit & Update Route
@@ -94,5 +98,9 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
+//Error Handler Middleware
+app.use((err, req, res, next) => {
+  res.send("Something went wrong");
+});
 //Server listen on port 8080
 app.listen(8080, () => console.log("Server is listening on port 8080"));
