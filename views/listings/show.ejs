@@ -1,0 +1,88 @@
+<% layout('./layouts/boilerplate') -%>
+
+<% layout('./layouts/boilerplate') -%>
+
+<div class="row mt-4 mb-5">
+  <div class="col-8 offset-3">
+    <h3 class="ms-3"><b><%=curListing.title %></b></h3>
+
+    <div class="card show-card listing-card col-8">
+      <img
+        src="<%=curListing.image.url %>"
+        class="card-img-top show-img"
+        alt="img"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          <%=curListing.description %> <br />
+          ₹ <%=curListing.price.toLocaleString("en-IN") %> / day <br />
+          <%=curListing.location %>, <%=curListing.country%>
+        </p>
+      </div>
+      <form
+        action="/listings/<%= curListing._id%>?_method=DELETE"
+        method="post"
+        class="ms-2"
+      >
+        <button class="btn btn-danger me-3">Delete</button>
+        <a href="/listings/<%= curListing._id%>/edit" class="btn btn-success"
+          >Edit</a
+        >
+      </form>
+    </div>
+  </div>
+
+  <!-- Review Form -->
+  <div class="col-8 offset-3">
+    <hr />
+    <h4>Leave a Review</h4>
+    <form
+      action="/listings/<%= curListing._id%>/review"
+      method="post"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="rating mb-3 mt-3">
+        <label for="rating" class="form-label">Rating</label>
+        <input
+          class="form-range"
+          type="range"
+          min="1"
+          max="5"
+          id="rating"
+          name="review[rating]"
+        />
+      </div>
+      <div class="comment mb-3 mt-3">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea
+          class="form-control"
+          name="review[comment]"
+          id="comment"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please enter a comment</div>
+      </div>
+      <br />
+      <button class="btn btn-outline-dark">Submit</button>
+    </form>
+
+    <hr />
+
+    <!-- //Comments -->
+
+    <p><b>All Reviews</b></p>
+    <div class="row">
+      <% for(review of curListing.reviews){%>
+      <div class="card col-5 ms-3 mb-3">
+        <div class="card-body">
+          <h5 class="card-title">@admin</h5>
+          <p class="card-text"><%=review.comment%></p>
+          <p class="card-text"><%=review.rating%> star</p>
+        </div>
+        
+      </div>
+      <% }%>
+    </div>
+  </div>
+</div>

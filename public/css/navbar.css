@@ -1,0 +1,19 @@
+/* ------------------NavBar------------------------- */
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+.fa-route {
+  color: #fe424d;
+  font-size: 2rem;
+}
+.nav-link {
+  color: #222222;
+}
+.brand-head {
+  margin: 0 0.7rem 0;
+  font-family: cursive;
+  color:#fe424d;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
