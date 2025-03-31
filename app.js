@@ -41,7 +41,7 @@ const validateListing = (req, res, next) => {
     next();
   }
 };
-/*
+
 
 //Validate Review from server side(hopscotch)
 const validateReview = (req, res, next) => {
@@ -53,7 +53,7 @@ const validateReview = (req, res, next) => {
     next();
   }
 };
-*/
+
 
 //Home Route
 app.get("/", (req, res) => {
@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
 app.get(
   "/listings",
   wrapAsync(async (req, res) => {
-    const allListings = await Listing.find({});
+    const allListings = await Listing.find({}).sort({ updatedAt: -1 });
     res.render("listings/index", { allListings });
   })
 );
@@ -74,7 +74,11 @@ app.get(
   "/listing/:id",
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    const curListing = await Listing.findById(id).populate("reviews");
+    const curListing = await Listing.findById(id).populate({
+      path: "reviews",
+      options: { sort: { updatedAt: -1 } }
+    });
+    
     res.render("listings/show", { curListing });
   })
 );
@@ -85,11 +89,11 @@ app.get("/listings/new", (req, res) => {
 });
 
 app.post(
-  "/listings",
-  validateListing,
-  wrapAsync(async (req, res, next) => {
-    let { title, description, image, price, location, country } = req.body;
+  "/listings",validateListing,
+    wrapAsync(async (req, res, next) => {
+    let { title, description, image, price, location, country } = req.body.listing;
     console.log(req.body);
+    
     await Listing.insertOne({
       title,
       description,
@@ -116,8 +120,7 @@ app.get(
 
 app.patch(
   "/listings/:id",
-  // validateListing,
-  wrapAsync(async (req, res) => {
+    wrapAsync(async (req, res) => {
     let { id } = req.params;
     console.log(req.body);
     const { title, description, image, price, location, country } = req.body;
@@ -150,14 +153,17 @@ app.delete(
 //Review Routes
 app.post(
   "/listings/:id/review",
-  //   validateReview,
+  validateReview,
   wrapAsync(async (req, res) => {
+  console.log("body : ",req.body)
     let listing = await Listing.findById(req.params.id);
     let newReview = new Review(req.body.review);
     listing.reviews.push(newReview);
     await newReview.save();
     await listing.save();
-    res.redirect(`/listing/${req.params.id}/`);
+    console.log(req.params.id)
+    let id = req.params.id;
+    res.redirect(`/listing/${id}`);
   })
 );
 

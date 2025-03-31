@@ -29,7 +29,7 @@ const listingSchema = new mongoose.Schema({
       ref: "Review",
     },
   ],
-});
+},{timestamps: true});
 
 const Listing = mongoose.model("Listing", listingSchema);
 

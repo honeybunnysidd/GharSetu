@@ -15,7 +15,8 @@
       <div class="card-body">
         <p class="card-text">
           <%=curListing.description %> <br />
-          ₹ <%=curListing.price.toLocaleString("en-IN") %> / day <br />
+          ₹ <%=curListing?.price?.toLocaleString("en-IN") %> / day <br />
+
           <%=curListing.location %>, <%=curListing.country%>
         </p>
       </div>
