@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { data } = require("./data");
 const Listing = require("../models/listing");
-// const Review = require("../models/review");
+const Review = require("../models/review");
 
 //Database Connection
 let MONGO_URL = "mongodb://127.0.0.1:27017/GharSetu";
@@ -18,6 +18,7 @@ async function main() {
 
 const initDB = async () => {
   await Listing.deleteMany({});
+  await Review.deleteMany({});
   await Listing.insertMany(data);
 };
 
