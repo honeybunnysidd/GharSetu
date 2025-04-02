@@ -1,12 +1,9 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
 const { listingSchema } = require("../schema.js");
 const Listing = require("../models/listing");
-
-
-
 
 //Validate listing from server side(hopscotch)
 const validateListing = (req, res, next) => {
@@ -67,8 +64,6 @@ router.get(
     res.render("listings/show", { curListing });
   })
 );
-
-
 
 //Edit & Update Route
 router.get(
