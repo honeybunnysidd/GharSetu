@@ -1,21 +1,5 @@
 const sampleListings = [
   {
-    title: "Ram Mandir",
-    description:
-      "Delve into the heart of devotion and history at the revered Ram Mandir, embodying India's spiritual essence.",
-    image: {
-      filename: "listingimage",
-      url: "https://t4.ftcdn.net/jpg/06/53/11/85/360_F_653118566_9395QCHnSYONi4WmxozjhTJKIrHM2Tsa.jpg",
-    },
-    price: 1500,
-    location: "Ayodhya",
-    country: "India",
-    geometry: {
-      type: "Point",
-      coordinates: [82.1997, 26.7922],
-    },
-  },
-  {
     title: "Shimla",
     description:
       "Embark on a journey to Shimla, where the majestic Himalayas meet colonial charm, offering a tranquil escape amidst lush greenery.",
@@ -207,22 +191,7 @@ const sampleListings = [
       coordinates: [77.2588, 28.5535],
     },
   },
-  {
-    title: "Golden Temple",
-    description:
-      "Bask in the divine aura of Amritsar's Golden Temple, a spiritual sanctuary revered by millions, where faith and humanity converge.",
-    image: {
-      filename: "listingimage",
-      url: "https://c4.wallpaperflare.com/wallpaper/823/156/52/temples-harmandir-sahib-amritsar-golden-temple-wallpaper-preview.jpg",
-    },
-    price: 2200,
-    location: "Amritsar",
-    country: "India",
-    geometry: {
-      type: "Point",
-      coordinates: [74.8765, 31.619],
-    },
-  },
+
   {
     title: "Nandi Hills",
     description:
@@ -461,6 +430,38 @@ const sampleListings = [
     geometry: {
       coordinates: [74.932, 32.9914],
       type: "Point",
+    },
+  },
+  {
+    title: "Golden Temple",
+    description:
+      "Bask in the divine aura of Amritsar's Golden Temple, a spiritual sanctuary revered by millions, where faith and humanity converge.",
+    image: {
+      filename: "listingimage",
+      url: "https://c4.wallpaperflare.com/wallpaper/823/156/52/temples-harmandir-sahib-amritsar-golden-temple-wallpaper-preview.jpg",
+    },
+    price: 2200,
+    location: "Amritsar",
+    country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [74.8765, 31.619],
+    },
+  },
+  {
+    title: "Ram Mandir",
+    description:
+      "Delve into the heart of devotion and history at the revered Ram Mandir, embodying India's spiritual essence.",
+    image: {
+      filename: "listingimage",
+      url: "https://t4.ftcdn.net/jpg/06/53/11/85/360_F_653118566_9395QCHnSYONi4WmxozjhTJKIrHM2Tsa.jpg",
+    },
+    price: 1500,
+    location: "Ayodhya",
+    country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [82.1997, 26.7922],
     },
   },
 ];
