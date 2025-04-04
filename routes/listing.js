@@ -46,7 +46,7 @@ router.post(
       location,
       country,
     });
-
+    req.flash("success", "New Listing Created");
     res.redirect("/listings");
   })
 );
@@ -60,7 +60,10 @@ router.get(
       path: "reviews",
       options: { sort: { updatedAt: -1 } },
     });
-
+    if (!curListing) {
+      req.flash("error", "Listing you requested for does not exist");
+      res.redirect("/listings");
+    }
     res.render("listings/show", { curListing });
   })
 );
@@ -71,7 +74,10 @@ router.get(
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     let editListing = await Listing.findById(id);
-
+    if (!editListing) {
+      req.flash("error", "Listing you requested for does not exist");
+      res.redirect("/listings");
+    }
     res.render("listings/edit", { editListing });
   })
 );
@@ -93,6 +99,8 @@ router.patch(
       },
       { new: true, runValidators: true }
     );
+    req.flash("success", "Listing Updated Successfully");
+
     res.redirect(`/listings/${id}`);
   })
 );
@@ -103,6 +111,8 @@ router.delete(
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
+    req.flash("success", "Listing Deleted Successfully");
+
     res.redirect("/listings");
   })
 );
