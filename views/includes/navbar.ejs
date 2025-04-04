@@ -3,7 +3,8 @@
 <nav class="navbar navbar-expand-md bg-body-light sticky-top border-bottom">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"
-      ><i class="fa-solid fa-route"></i><span class="brand-head">GharSetu</span></a
+      ><i class="fa-solid fa-route"></i
+      ><span class="brand-head">GharSetu</span></a
     >
     <button
       class="navbar-toggler"
@@ -18,6 +19,16 @@
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/listings">All Listing</a>
         <a class="nav-link" href="/listings/new">Add Your Place</a>
+      </div>
+      <div class="navbar-nav ms-auto">
+       <% if(!currUser){%>
+          <a class="nav-link" href="/signup">Signup</a>
+        <a class="nav-link" href="/login">Login</a>
+        <%}%>
+        <% if(currUser){%>
+
+        <a class="nav-link" href="/logout">Logut</a>
+          <%}%>
       </div>
     </div>
   </div>

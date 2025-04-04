@@ -4,6 +4,7 @@ const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
 const { listingSchema } = require("../schema.js");
 const Listing = require("../models/listing");
+const { isLoggedIn } = require("../middleware.js");
 
 //Validate listing from server side(hopscotch)
 const validateListing = (req, res, next) => {
@@ -26,7 +27,7 @@ router.get(
 );
 
 //Create New Listing
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
   res.render("listings/new.ejs");
 });
 
@@ -70,7 +71,7 @@ router.get(
 
 //Edit & Update Route
 router.get(
-  "/:id/edit",
+  "/:id/edit",isLoggedIn,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     let editListing = await Listing.findById(id);
@@ -83,7 +84,7 @@ router.get(
 );
 
 router.patch(
-  "/:id",
+  "/:id",isLoggedIn,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     const { title, description, image, price, location, country } = req.body;
@@ -107,7 +108,7 @@ router.patch(
 
 //Destroy Listing Route
 router.delete(
-  "/:id",
+  "/:id",isLoggedIn,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
