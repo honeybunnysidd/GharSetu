@@ -12,12 +12,17 @@
       />
       <div class="card-body">
         <p class="card-text">
-          <%=curListing.description %> <br />
-          ₹ <%=curListing?.price?.toLocaleString("en-IN") %> / day <br />
-
+          <i>Owned by @<%=curListing.owner.username %></i>
+        </p>
+        <p class="card-text"><%=curListing.description %></p>
+        <p class="card-text">
+          ₹ <%=curListing?.price?.toLocaleString("en-IN") %> / day
+        </p>
+        <p class="card-text">
           <%=curListing.location %>, <%=curListing.country%>
         </p>
       </div>
+      <%if(currUser && currUser._id.equals(curListing.owner._id)){%>
       <form
         action="/listings/<%= curListing._id%>?_method=DELETE"
         method="post"
@@ -28,11 +33,13 @@
           >Edit</a
         >
       </form>
+      <%}%>
     </div>
   </div>
 
   <!-- Review Form -->
   <div class="col-8 offset-3">
+    <% if(currUser){%>
     <hr />
     <h4>Leave a Review</h4>
     <form
@@ -65,7 +72,7 @@
       <br />
       <button class="btn btn-outline-dark">Submit</button>
     </form>
-
+    <% }%>
     <hr />
 
     <!-- //Comments -->
@@ -75,7 +82,7 @@
       <% for(review of curListing.reviews){%>
       <div class="card col-5 ms-3 mb-3">
         <div class="card-body">
-          <h5 class="card-title">@admin</h5>
+          <h5 class="card-title" style="opacity: .6;">@<%=review.author.username%></h5>
           <p class="card-text"><%=review.comment%></p>
           <p class="card-text"><%=review.rating%> star</p>
         </div>

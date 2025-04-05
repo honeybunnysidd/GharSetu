@@ -31,15 +31,17 @@ const listingSchema = new mongoose.Schema(
         ref: "Review",
       },
     ],
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
 
 listingSchema.post("findOneAndDelete", async (listing) => {
-
-  if(listing){
+  if (listing) {
     await Review.deleteMany({ _id: { $in: listing.reviews } });
-
   }
 });
 
