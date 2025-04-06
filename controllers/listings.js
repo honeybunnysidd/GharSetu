@@ -10,13 +10,16 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createListing = async (req, res, next) => {
+  let url = req.file.path;
+  let filename = req.file.filename;
+
   let { title, description, image, price, location, country } =
     req.body.listing;
   let owner = req.user._id;
   const newListing = await Listing.insertOne({
     title,
     description,
-    image: { url: image },
+    image: { url: url, filename: filename },
     price,
     location,
     country,
