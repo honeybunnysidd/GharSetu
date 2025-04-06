@@ -7,6 +7,7 @@
       method="post"
       class="container mt-5 mb-5 needs-validation"
       novalidate
+      enctype="multipart/form-data"
     >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -35,16 +36,13 @@
         <div class="invalid-feedback">Description should be valid!</div>
 
         <div class="mb-3">
-          <label for="img" class="form-label">Image url</label>
+          <label for="img" class="form-label">Upload Image</label>
           <input
-            required
-            type="url"
+            type="file"
             class="form-control"
             id="img"
-            name="image"
-            value="<%= editListing.image.url %>"
+            name="listing[image]"
           />
-          <div class="invalid-feedback">URL should be valid!</div>
         </div>
       </div>
       <div class="row">
