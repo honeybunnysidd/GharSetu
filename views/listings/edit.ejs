@@ -13,7 +13,7 @@
         <label for="title" class="form-label">Title</label>
         <input
           type="text"
-          name="title"
+          name="listing[title]"
           class="form-control"
           required
           id="title"
@@ -26,7 +26,7 @@
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <textarea
-          name="description"
+          name="listing[description]"
           class="form-control"
           required
           id="description"
@@ -52,7 +52,7 @@
             type="number"
             class="form-control"
             id="price"
-            name="price"
+            name="listing[price]"
             value="<%= editListing.price %>"
             required
           />
@@ -62,7 +62,7 @@
           <label for="location" class="form-label">Country</label>
           <input
             type="text"
-            name="country"
+            name="listing[country]"
             class="form-control"
             required
             id="country"
@@ -75,7 +75,7 @@
         <label for="location" class="form-label">Location</label>
         <input
           type="text"
-          name="location"
+          name="listing[location]"
           class="form-control"
           required
           id="location"
