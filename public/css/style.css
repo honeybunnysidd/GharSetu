@@ -47,8 +47,14 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+
+#map {
+ height: 400px;
+ width: 60vh;
+ border-radius: 1rem
+}
 /* -----------------(edit.ejs)---------------- */
 
-.prevImg{
-  border-radius: .8rem;
+.prevImg {
+  border-radius: 0.8rem;
 }
