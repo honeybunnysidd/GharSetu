@@ -41,7 +41,7 @@ footer {
     padding: 10px 0px 0px 0px;
     margin-right: 5%;
     align-items: center;
-    width: 100%;
+    width: 100% !important;
     display: flex;
     justify-content: center;
   }
@@ -77,4 +77,11 @@ footer {
       100% {
           transform: scale(1);
       }
+  }
+
+  @media (max-width:450px) {
+    .ftr-sidd p{
+      font-size: .9rem;
+    }
+    
   }
