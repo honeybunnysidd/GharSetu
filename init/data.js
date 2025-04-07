@@ -461,7 +461,7 @@ const sampleListings = [
     country: "India",
     geometry: {
       type: "Point",
-      coordinates: [82.1997, 26.7922],
+      coordinates: [82.1998, 26.7922],
     },
   },
 ];
