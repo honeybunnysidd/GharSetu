@@ -1,7 +1,6 @@
 const Listing = require("../models/listing");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
-
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
@@ -16,23 +15,10 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.createListing = async (req, res, next) => {
   let response = await geocodingClient
     .forwardGeocode({
-      query: `${req.body.listing.location}, ${req.body.listing.country}`,
+      query: req.body.listing.location,
       limit: 1,
     })
     .send();
-mapboxgl.accessToken = mapToken;                      
-const map = new mapboxgl.Map({
-  container: "map",
-  style: "mapbox://styles/mapbox/streets-v12",       
-  center: listing.geometry.coordinates,               
-  zoom: 1,  
-  cooperativeGestures: true                                      
-});
-const marker1 = new mapboxgl.Marker({ color: "red" }) 
-  .setLngLat(listing.geometry.coordinates)            
-  .setPopup(                                        
-    new mapboxgl.Popup({ offset: 25 }).setHTML(`<h6>${listing.title}</h6><p><b>${listing.location}, ${listing.country}</b></p><p>Exact location will be provided after booking!</p>`)) 
-  .addTo(map);
   let url = req.file.path;
   let filename = req.file.filename;
   let geometry = response.body.features[0].geometry;

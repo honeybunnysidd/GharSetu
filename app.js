@@ -10,6 +10,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -29,7 +30,8 @@ app.use(express.static(path.join(__dirname, "/public/")));
 app.engine("ejs", ejsMate);
 
 //Database Connection
-let MONGO_URL = "mongodb://127.0.0.1:27017/GharSetu";
+// let MONGO_URL = "mongodb://127.0.0.1:27017/GharSetu";
+let MONGO_URL = process.env.ATLASDB_URL;
 main()
   .then(() => {
     console.log("DB connected Sucessfully");
@@ -39,8 +41,22 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
+//Mongo Session
+const store = MongoStore.create({
+  mongoUrl: process.env.ATLASDB_URL,
+  crypto: {
+    secret: "mysupersecretcode",
+  },
+  touchAfter: 24 * 60 * 60,
+});
+
+store.on("error", () => {
+  console.log("Error in Mongo Session Store", err);
+});
+
 //Creating Sessions
 const sessionOptions = {
+  store,
   secret: "mysupersecretcode",
   resave: false,
   saveUninitialized: true,
@@ -87,7 +103,7 @@ app.all("*", (req, res, next) => {
 //------------------Error Handler Middleware
 app.use((err, req, res, next) => {
   let { status = 500, message = "Something went wrong" } = err;
-  res.status(status).render("listings/error", { message,err });
+  res.status(status).render("listings/error", { message, err });
 });
 //Server listen on port 8080
 app.listen(8080, () => console.log("Server is listening on port 8080"));
