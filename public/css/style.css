@@ -8,6 +8,9 @@ body {
 .container {
   flex: 1;
 }
+.main-content {
+  flex: 1;
+}
 
 /* -----------------(index.ejs)---------------- */
 

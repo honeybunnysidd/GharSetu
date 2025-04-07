@@ -1,5 +1,11 @@
 <% layout('./layouts/boilerplate') -%>
-
+<style>
+  @media (max-width: 576px) {
+    .buttons {
+      display: flex;
+    }
+  }
+</style>
 <div class="row">
   <div class="col-6 offset-3">
     <h3 class="container mt-4">Signup</h3>
@@ -43,8 +49,10 @@
           id="password"
         />
       </div>
-      <button type="reset" class="btn btn-danger me-3">Reset</button>
-      <button class="btn btn-success">Register</button>
+      <div class="buttons">
+        <button type="reset" class="btn btn-danger me-3">Reset</button>
+        <button class="btn btn-success">Register</button>
+      </div>
     </form>
   </div>
 </div>

@@ -3,7 +3,7 @@
   const mapToken =  "<%= process.env.MAP_TOKEN%>";
   const curListing =  <%- JSON.stringify(curListing) %>;
 </script>
-<div class="row mt-4 mb-5">
+<div class="row mt-4 mb-5 ">
   <div class="col-8 offset-3">
     <h3 class="ms-3"><b><%=curListing.title %></b></h3>
 
@@ -53,7 +53,6 @@
     >
       <div class="rating mb-3 mt-3">
         <label class="form-lable" for="rating">Rating</label>
-        <!-- <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating"> -->
         <fieldset class="starability-slot">
           <input
             type="radio"
