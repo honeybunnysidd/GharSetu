@@ -60,22 +60,16 @@ Excited to share my journey of developing a feature-rich full-stack web applicat
 ### Social Authentication
 
 -   **Passport Local**: Local authentication strategy.
--   **Passport Facebook**: Facebook authentication strategy.
--   **Passport Google OAuth20**: Google OAuth2.0 authentication strategy.
 -   **Passport Local Mongoose**: Mongoose-specific authentication strategy.
     Authentication
 
 ## Key Features
 
--   **User Authentication:** Login, Logout, and User Profile Section
+-   **User Authentication:** Login and Logout
 -   **CRUD Operations:** Add, Edit, and Delete Listings
 -   **Review System:** Add and Delete Reviews
--   **Account Management:** Update User Account and Password
 -   **User Data Security:** Password Hashing and Encryption
 -   **Interactive Maps:** Leveraging Mapbox for Location Visualization
--   **Login with Google:** Authenticate with your Google account for a seamless experience
--   **Login with Facebook:** Easily log in using your Facebook credentials
--   **Login with Email:** Traditional email login for user convenience
 
 ## How to Install
 
